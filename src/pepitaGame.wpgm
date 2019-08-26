@@ -12,22 +12,33 @@ program PepitaGame {
 	game.ground("suelo.png")
 
 //	VISUALES
-	game.addVisualIn(alpiste, game.at(5,5))
-	game.addVisualIn(manzana, game.at(5,1))
+	game.addVisual(alpiste)
+	game.addVisual(manzana)
 	game.addVisual(buenosAires)
 	game.addVisual(villaGesell)
 	game.addVisual(pepita)
 
-//	TECLADO
-	keyboard.h().onPressDo { game.say(pepita, "Hola chiques!") }
 
+/******************************TECLADO*****************************/
+// *mensajes
+	keyboard.h().onPressDo { game.say(pepita, "Hola chiques!") }
+	//keyboard.e().onPressDo { showAttributes(pepita) }
+
+// *acciones
 	keyboard.v().onPressDo { pepita.volaHacia(villaGesell) }
 	keyboard.b().onPressDo { pepita.volaHacia(buenosAires) }
-
+	keyboard.m().onPressDo { pepita.volaHacia(manzana) }
+	keyboard.a().onPressDo { pepita.volaHacia(alpiste) }
+	
+// *movimientos
 	keyboard.up().onPressDo { pepita.move(pepita.position().up(1)) }
 	keyboard.down().onPressDo { pepita.move(pepita.position().down(1)) }
 	keyboard.left().onPressDo { pepita.move(pepita.position().left(1)) }
 	keyboard.right().onPressDo { pepita.move(pepita.position().right(1)) }
+		
+//	INTERACCIONES
+	game.onCollideDo (pepita, { comida => comida.teComieron() })
+	
 		
 //	START
 	game.start()
