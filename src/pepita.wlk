@@ -1,5 +1,6 @@
 import ciudades.*
 import wollok.game.*
+import pepita.*
 
 object pepita {
 	var property energia = 100

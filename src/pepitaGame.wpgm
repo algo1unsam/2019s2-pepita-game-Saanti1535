@@ -22,7 +22,7 @@ program PepitaGame {
 /******************************TECLADO*****************************/
 // *mensajes
 	keyboard.h().onPressDo { game.say(pepita, "Hola chiques!") }
-	//keyboard.e().onPressDo { showAttributes(pepita) }
+	keyboard.e().onPressDo { game.say(pepita, "Energía:" + pepita.energia().toString()) }
 
 // *acciones
 	keyboard.v().onPressDo { pepita.volaHacia(villaGesell) }

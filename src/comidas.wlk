@@ -1,5 +1,5 @@
 import wollok.game.* 
-
+import pepita.*
 
 object manzana {
 	method image() = "manzana.png"
@@ -9,6 +9,7 @@ object manzana {
 	
 	method teComieron(){
 		game.removeVisual(self)
+		pepita.come(self)
 	}
 }
 
@@ -20,5 +21,6 @@ object alpiste {
 	
 	method teComieron(){
 		game.removeVisual(self)
+		pepita.come(self)
 	}
 }
