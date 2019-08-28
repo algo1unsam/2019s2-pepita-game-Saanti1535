@@ -5,41 +5,44 @@ import wollok.game.*
 
 program PepitaGame {
 	
-//	CONFIG	
+/********************************************* CONFIG *********************************************/	
 	game.title("Pepita")
 	game.height(10)
 	game.width(10)
 	game.ground("suelo.png")
 
-//	VISUALES
+/********************************************* VISUALES *********************************************/
 	game.addVisual(alpiste)
 	game.addVisual(manzana)
 	game.addVisual(buenosAires)
 	game.addVisual(villaGesell)
 	game.addVisual(pepita)
+	game.addVisual(roque)
 
 
-/******************************TECLADO*****************************/
-// *mensajes
+/********************************************* KEYBOARD *********************************************/
+// *messages
 	keyboard.h().onPressDo { game.say(pepita, "Hola chiques!") }
 	keyboard.e().onPressDo { game.say(pepita, "Energía:" + pepita.energia().toString()) }
 
-// *acciones
+// *actions
 	keyboard.v().onPressDo { pepita.volaHacia(villaGesell) }
 	keyboard.b().onPressDo { pepita.volaHacia(buenosAires) }
 	keyboard.m().onPressDo { pepita.volaHacia(manzana) }
 	keyboard.a().onPressDo { pepita.volaHacia(alpiste) }
 	
-// *movimientos
-	keyboard.up().onPressDo { pepita.move(pepita.position().up(1)) }
-	keyboard.down().onPressDo { pepita.move(pepita.position().down(1)) }
-	keyboard.left().onPressDo { pepita.move(pepita.position().left(1)) }
-	keyboard.right().onPressDo { pepita.move(pepita.position().right(1)) }
+// *moves
+	keyboard.up().onPressDo { roque.move(roque.position().up(1)) }
+	keyboard.down().onPressDo { roque.move(roque.position().down(1)) }
+	keyboard.left().onPressDo { roque.move(roque.position().left(1)) }
+	keyboard.right().onPressDo { roque.move(roque.position().right(1)) }
 		
-//	INTERACCIONES
-	game.onCollideDo (pepita, { comida => comida.teComieron() })
+//	*interactions
+	//game.onCollideDo (pepita, { unaCosa => unaCosa.teEncontro(pepita) })
+	game.onCollideDo (roque, {unaCosa => unaCosa.chocasteCon(roque) })	
+	//game.onCollideDo (pepita, {unaCosa => unaCosa.dar() })
 	
-		
-//	START
+	
+/********************************************* START *********************************************/
 	game.start()
 }
